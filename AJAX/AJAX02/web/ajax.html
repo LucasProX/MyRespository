@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX02</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function (){
+      document.getElementById("btn").onclick = function (){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function (){
+                if (this.readyState == 4){
+                    if (this.status == 200){
+
+                      //document.getElementById("mydiv").innerHTML = this.responseText;
+                      var jsons = JSON.parse(this.response);
+                      var html = "";
+                        for (var i = 0; i < jsons.length; i++) {
+                            var stu = jsons[i];
+                            html += "<tr>";
+
+                            html += "<td>" + stu.id + "</td>";
+                            html += "<td>" + stu.name + "</td>";
+                            html += "<td>" + stu.grade + "</td>";
+
+
+                            html += "</tr>";
+                        }
+                      document.getElementById("list").innerHTML = html;
+
+
+                    }else {
+                        alert(this.status);
+                    }
+                }
+            }
+            xhr.open("get","/AJAX02/ajax02servlet",true);
+            xhr.send();
+        }
+    }
+
+
+    $(function(){
+        $("#btn").click(function(){
+            alert("woshihaoren");
+
+            $("username").val("lisi");
+        })
+    })
+
+
+    /*$(function(){
+        $("btn").click(function(){
+            $.ajax(
+                url : xxx/xxx,
+                type : "post",
+                dataType : "jsonp",
+                jsonp : "fun",
+                jsonpCallback : sayHello
+
+                /!*success : function(data){
+                    $("mydiv").html = data.text
+                }*!/
+
+            )
+
+        })
+    })*/
+
+    $(function(){
+        $("btn2").keyup(function(){
+            $.ajax({
+                date : $("serch").val(),
+                success : function(data){
+
+            }
+            }
+        )
+        })
+    })
+
+
+</script>
+
+
+<input type="button" value="显示列表" id="btn">
+<div id="mydiv">
+
+</div>
+<h1 align="center">学生列表</h1>
+<hr>
+<table width="50%" align="center" border="3px">
+  <tr>
+    <td>学号</td>
+    <td>姓名</td>
+    <td>成绩</td>
+  </tr>
+
+
+  <tbody id="list">
+
+
+
+  </tbody>
+</table>
+
+
+</body>
+</html>

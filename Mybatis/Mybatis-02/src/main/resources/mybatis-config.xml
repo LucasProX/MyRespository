@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--标签是有顺序的，报错的时候悬停鼠标就行-->
+
+    <!--配置一些功能-->
+    <!--开启 mybatis对标准日志功能的实现-->
+    <!--<settings>
+        &lt;!&ndash;set
+        ting name="LogImpl" value="STD_LOGGIN"/&ndash;&gt;
+        &lt;!&ndash;有不同的日志方法，需要引入jar包&ndash;&gt;
+    </settings>-->
+
+
+    <environments default="development">
+        <!--一个环境对应一个数据库-->
+        <!--default就是默认用哪个-->
+
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/p_mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="521477"/>
+            </dataSource>
+        </environment>
+
+        <environment id="development2">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/lucas"/>
+                <property name="username" value="root"/>
+                <property name="password" value="521477"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--执行XxxMapper.xml文件的路径-->
+        <!--resource属性自动会从类的根路径下开始查找资源。-->
+        <mapper resource="CarMapper2.xml"/>
+        <!--resource属性：从类路径当中加载资源。-->
+        <!--<mapper resource="com/CarMapper2.xml"/>-->
+
+        <!--url属性：从绝对路径当中加载资源。-->
+        <!--语法格式：file:///绝对路径-->
+        <!--不建议：因为移植性差。-->
+        <!--<mapper url="file:///d:/CarMapper2.xml"/>-->
+    </mappers>
+
+</configuration>

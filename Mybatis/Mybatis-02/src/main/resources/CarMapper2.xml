@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com/lucas2/junit/service/CarMapperTest">
+    <sql id="allColumn">
+        id,car_num,brand,guide_price,produce_time,car_type
+    </sql>
+    
+<!--insert语句-->
+    <insert id="insertCarByPojo">
+        insert into t_car(<include refid="allColumn"></include>)
+        values(null,#{carNum},#{brand},#{guidePrice},#{produceTime},#{carType});
+        /*values(null,#{},#{},#{},#{},#{});*/
+        /*Car car = new Car(null, "3333", "比亚迪秦", 30.0, "2020-11-11", "新能源");*/
+    </insert>
+
+    <delete id="deleteById">
+        delete from t_car where id=#{id};
+    </delete>
+
+    <update id="updateById">
+        update t_car set car_num=#{carNum},brand=#{brand} where id=#{id};
+    </update>
+
+    <select id="selectById" resultType="com.lucas2.bean.Car">
+        select
+            id,car_num as carNum,brand,guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from
+            t_car
+        where
+            id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.lucas2.bean.Car">
+        select
+            id,car_num as carNum,brand,guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from
+            t_car
+        where
+            id = #{id}
+    </select>
+
+
+
+</mapper>

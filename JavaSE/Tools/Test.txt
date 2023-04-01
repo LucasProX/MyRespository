@@ -1,0 +1,63 @@
+
+查询总访问次数 select count(*) from user;  287594
+查询重复ip    select distinct ip from user;  10696
+
+查询2023总访问次数 select (*) from user where equip like '%2023%' ; 61120
+查询重复ip  select count(distinct ip) from (select * from user where equip like '%2023%') temp; 2792
+
+
+查询手机端访问次数 iphone-10947 Android-12232 select conut(*) from user where equip like '%iPhone%';  select * from user where equip like '%Android%';
+查询电脑端访问次数 windows-153906 linux-18989 mac-10608
+查询windows和mac访问次数 select * from user where equip like '%Windows%';  select * from user where equip like '%Mac%'; select * from user where equip like '%Linux%';
+查询每个月共有多少次访问，其中 select count(*) from user where equip like '%May/2022%';
+    22/05 10524  select count(*) from user where equip like '%may/2022%';
+            973  select count(distinct ip) from (select * from user where equip like '%may/2022%') temp;
+    22/06 12840
+    select count(distinct ip) from (select * from user where equip like '%jun/2022%') temp; 1837
+
+    22/07 25587
+    select count(distinct ip) from (select * from user where equip like '%jul/2022%') temp; 1420
+
+    22/08 45755
+    select count(distinct ip) from (select * from user where equip like '%aug/2022%') temp; 1416
+
+    22/09 30490
+    select count(distinct ip) from (select * from user where equip like '%sep/2022%') temp; 1568
+
+    22/10 33798
+    select count(distinct ip) from (select * from user where equip like '%oct/2022%') temp; 1359
+
+    22/11 37013
+    select count(distinct ip) from (select * from user where equip like '%nov/2022%') temp; 1401
+
+    22/12 30467
+    select count(distinct ip) from (select * from user where equip like '%dec/2022%') temp; 1595
+
+    23/01 31167
+    select count(distinct ip) from (select * from user where equip like '%jan/2023%') temp; 1639
+
+    23/02 29953 select count(*) from user where equip like '%feb/2023%';
+    select count(distinct ip) from (select * from user where equip like '%feb/2023%') temp; 1589
+
+    同一用户多少个
+    手机端(iPhone/Android)多少次，
+    电脑端多少次
+查询每天高峰访问时间段
+
+访问系统共有：windows，linux，mac
+select * from user where username like '%张%'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

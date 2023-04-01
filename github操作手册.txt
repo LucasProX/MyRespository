@@ -1,0 +1,1 @@
+创建远程仓库 git remote add origin git@github.com:LucasProX/lab_file_code.git
